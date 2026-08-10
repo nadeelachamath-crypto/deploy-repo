@@ -14,7 +14,7 @@ function convertToBool(text, fault = "true") {
 
 module.exports = {
   SESSION_ID: process.env.SESSION_ID || "dmAyHD4T#khULiaxX7AO2xQj99iitUjJyhow4OuZL1EdQuM5mBKU",   /// <-- your session id hear (Session id recommended) // qr in terminal available 
-  MONGODB: process.env.MONGODB || "mongodb://mongo:KsQAwShrRfZAQWzoEHuDUrosMMAPoWAm@mongodb.railway.internal:27017", // change this if you have monogodb url
+  MONGODB: process.env.MONGODB || "mongodb://mongo:fdOhWkhmTWzWRwqgHtEJYRKrsrAjHQEq@mongodb.railway.internal:27017", // change this if you have monogodb url
   OWNER_NUM: (process.env.OWNER_NUM || "94701981053").split(","), // <-- your number 
 
 
