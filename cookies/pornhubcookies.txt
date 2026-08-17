@@ -2,12 +2,21 @@
 # https://curl.haxx.se/rfc/cookie_spec.html
 # This is a generated file! Do not edit.
 
-.pornhub.com	TRUE	/	TRUE	1782830310	platform	pc
-.pornhub.com	TRUE	/	TRUE	1813761510	ss	835975461969793520
-.pornhub.com	TRUE	/	TRUE	1784817510	comp_detect-cookies	14893.100000
-.pornhub.com	TRUE	/	TRUE	0	__s	6A3A9A5F-42FE722901BB2F9399-7969C11
-.pornhub.com	TRUE	/	TRUE	1813782436	__l	6A3A9A5F-42FE722901BB2F9399-7969C11
-www.pornhub.com	FALSE	/	FALSE	0	rp	2144039695:domdCS7Ryy8=
-.pornhub.com	TRUE	/	TRUE	1813761511	cookieConsent	2
-.pornhub.com	TRUE	/	FALSE	1782229114	accessAgeDisclaimerPH	2
-.pornhub.com	TRUE	/	FALSE	1797777514	g_state	{"i_l":1,"i_ll":1782225514909,"i_b":"FrbeMTQrd7h8fE5uDDNgIniIpWwOXEi1toUZvgEqiIE","i_e":{"enable_itp_optimization":24},"i_et":1782225514909}
+.pornhub.com	TRUE	/	TRUE	1787082893	ua	6967ec7261b3cbe6a91d798c6b951c60
+.pornhub.com	TRUE	/	TRUE	1787601293	platform	pc
+.pornhub.com	TRUE	/	TRUE	1802548493	bs	00000000000000007c72ae8ac8784e93
+.pornhub.com	TRUE	/	TRUE	1802548493	bsdd	00000000000000007c72ae8ac8784e93
+.pornhub.com	TRUE	/	TRUE	1802548493	ss	621990558078413398
+.pornhub.com	TRUE	/	TRUE	1802548493	sessid	322265831137159229
+.pornhub.com	TRUE	/	TRUE	1789588493	comp_detect-cookies	39353.100000
+.pornhub.com	TRUE	/	TRUE	1789588493	fg_afaf12e314c5419a855ddc0bf120670f	98479.100000
+.pornhub.com	TRUE	/	TRUE	1789588493	fg_43cd950e43067a4ecc8c7ba3d887ff26	29666.100000
+.pornhub.com	TRUE	/	TRUE	1789588493	fg_55e3b6f0afd46366d6fa797544b15af2	25061.100000
+.pornhub.com	TRUE	/	TRUE	1789588493	fg_41b1995ee5530001895f2da326e410dd	88419.100000
+.pornhub.com	TRUE	/	TRUE	1789588493	fg_7d31324eedb583147b6dcbea0051c868	29197.100000
+.pornhub.com	TRUE	/	TRUE	0	__s	6A83670C-42FE722901BB115314-3AC3B34
+.pornhub.com	TRUE	/	TRUE	1802548493	__l	6A83670C-42FE722901BB115314-3AC3B34
+www.pornhub.com	FALSE	/	FALSE	0	rp	2264811184:fI5h8rk0yz4=
+.pornhub.com	TRUE	/	TRUE	1802548494	cookieConsent	1
+.pornhub.com	TRUE	/	FALSE	1787000096	accessAgeDisclaimerPH	2
+.pornhub.com	TRUE	/	FALSE	1802548495	g_state	{"i_l":0,"i_ll":1786996495902,"i_b":"EnlPLjNr8zOxqEAEysCGRgnUwW+HY4X4/1OrsfDWgJg","i_e":{"enable_itp_optimization":24},"i_et":1786996495902}
