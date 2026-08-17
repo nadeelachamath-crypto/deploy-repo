@@ -2,8 +2,11 @@
 # https://curl.haxx.se/rfc/cookie_spec.html
 # This is a generated file! Do not edit.
 
-.eporner.com	TRUE	/	TRUE	1783435574	EPRNS	858b0e3e5f53e1e7ad11e996731b98b5
-.eporner.com	TRUE	/	TRUE	1784817974	PHPSESSID	781155e53365c53c943245e4c271ca7f
-www.eporner.com	FALSE	/	FALSE	0	ADBp	yes
+.eporner.com	TRUE	/	TRUE	1788205981	EPRNS	e78c8620dfee4d5a7fcb7071558f9573
+.eporner.com	TRUE	/	TRUE	1789588381	PHPSESSID	95b4e8e50b0e5484759c9941691504e7
 www.eporner.com	FALSE	/	FALSE	0	ADBpcount	1
-.eporner.com	TRUE	/	FALSE	1813761975	epcolor	black
+www.eporner.com	FALSE	/	FALSE	0	ADBp	yes
+.eporner.com	TRUE	/	FALSE	1802548382	epcolor	black
+www.eporner.com	FALSE	/	FALSE	1802548382	_pk_ref.1.5d0f	%5B%22%22%2C%22%22%2C1786996382%2C%22https%3A%2F%2Fwww.google.com%2F%22%5D
+www.eporner.com	FALSE	/	FALSE	1802548382	_pk_id.1.5d0f	c45fbac94ff49a01.1786996382.
+www.eporner.com	FALSE	/	FALSE	1786998182	_pk_ses.1.5d0f	1
