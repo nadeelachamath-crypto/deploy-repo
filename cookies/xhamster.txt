@@ -2,14 +2,17 @@
 # https://curl.haxx.se/rfc/cookie_spec.html
 # This is a generated file! Do not edit.
 
-.xhamster.com	TRUE	/	TRUE	1782311979	stats_src_last	google.com
-.xhamster.com	TRUE	/	FALSE	1813761595	cookie_accept_v2	%7B%22e%22%3A1%2C%22f%22%3A1%2C%22t%22%3A1%2C%22a%22%3A1%7D
-.xhamster.com	TRUE	/	FALSE	1813761595	ff_thumb_offset	3
-.xhamster.com	TRUE	/	FALSE	1782226478	recs_show_time	1782225573
-.xhamster.com	TRUE	/	FALSE	1813761595	settings	eyJpc1dlYnBTdXBwb3J0ZWQiOnRydWUsImlzV2VibVN1cHBvcnRlZCI6dHJ1ZSwiZXh0RGV0ZWN0ZWRWMiI6ZmFsc2UsIm1vbWVudHNJc0hpZGRlbiI6bnVsbCwidHJ1c3RVUkxzIjpbInhoYW1zdGVyLmNvbSJdLCJpc1NpZGViYXJIaWRkZW4iOm51bGwsImV4cGlyZXMiOnsidHJ1c3RVUkxzIjoxNzgyMjMyNzgwLCJleHREZXRlY3RlZFYyIjoxNzgyMjI1NTk1fSwidHNTcG90Q291bnRlcnMiOlt7InNwb3QiOiJtYXN0ZXJfY3ViZSIsInRpbWUiOjE3ODIyMjU1NzMsImNvdW50IjozfSx7InNwb3QiOiJtYXN0ZXJfZm9vdGVyIiwidGltZSI6MTc4MjIyNTU3MywiY291bnQiOjN9XX0%3D
-.xhamster.com	TRUE	/	TRUE	1784817595	_cfg	1c742046c69dd7286850f1054a6f402e
-xhamster.com	FALSE	/	FALSE	0	cookie_accept	1
+.xhamster.com	TRUE	/	TRUE	1787083035	stats_src_last	google.com
+.xhamster.com	TRUE	/	FALSE	1802548659	cookie_accept_v2	%7B%22e%22%3A1%2C%22f%22%3A1%2C%22t%22%3A1%2C%22a%22%3A1%7D
+.xhamster.com	TRUE	/	FALSE	1789588658	x_content_preference_index	straight
+.xhamster.com	TRUE	/	TRUE	1789588659	_cfg	1ff27d8c2a93825c95f8a8afdf0e2b91
 xhamster.com	FALSE	/	FALSE	0	ts_popunder	true
+xhamster.com	FALSE	/	FALSE	0	cookie_accept	1
 .xhamster.com	TRUE	/	FALSE	0	x_csrf_token	1
-.xhamster.com	TRUE	/	FALSE	1813761582	parental-control	no
-xhamster.com	FALSE	/	FALSE	1797777597	g_state	{"i_l":1,"i_ll":1782225597327,"i_b":"p4XFC/zeRvS8VTryG1Ewpa9Wx7u4CxfDVs83hOuCMDA","i_e":{"enable_itp_optimization":24},"i_et":1782225597327,"i_p":1782311997655}
+.xhamster.com	TRUE	/	FALSE	1802548637	parental-control	yes
+.xhamster.com	TRUE	/	FALSE	1802548659	ff_thumb_offset	3
+.xhamster.com	TRUE	/	FALSE	1786997558	recs_show_time	1786996658
+.xhamster.com	TRUE	/	FALSE	1802548659	moments_listing_ad_offset	3
+.xhamster.com	TRUE	/	FALSE	1789588659	u-v-channels	straight%3A5937-2
+.xhamster.com	TRUE	/	FALSE	1802548660	settings	eyJpc1dlYnBTdXBwb3J0ZWQiOnRydWUsImlzV2VibVN1cHBvcnRlZCI6dHJ1ZSwiZXh0RGV0ZWN0ZWRWMiI6dHJ1ZSwibW9tZW50c0lzSGlkZGVuIjpudWxsLCJ0cnVzdFVSTHMiOlsieGhhbXN0ZXIuY29tIl0sImlzU2lkZWJhckhpZGRlbiI6bnVsbCwiZXhwaXJlcyI6eyJ0cnVzdFVSTHMiOjE3ODcwMDM4MzcsImV4dERldGVjdGVkVjIiOjE3ODY5OTY2NTl9LCJ0c1Nwb3RDb3VudGVycyI6W3sic3BvdCI6Im1hc3Rlcl9jdWJlIiwidGltZSI6MTc4Njk5NjYzNCwiY291bnQiOjN9LHsic3BvdCI6Im1hc3Rlcl9mb290ZXIiLCJ0aW1lIjoxNzg2OTk2NjM0LCJjb3VudCI6M31dfQ%3D%3D
+xhamster.com	FALSE	/	FALSE	1802548660	g_state	{"i_l":0,"i_ll":1786996660502,"i_b":"rhTeNvwYJ2hDiH+rWnjm1lePjbWZdZXuKIPff38Td9Y","i_e":{"enable_itp_optimization":24},"i_et":1786996660502}
