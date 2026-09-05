@@ -2,21 +2,14 @@
 # https://curl.haxx.se/rfc/cookie_spec.html
 # This is a generated file! Do not edit.
 
-.pornhub.com	TRUE	/	TRUE	1787082893	ua	6967ec7261b3cbe6a91d798c6b951c60
-.pornhub.com	TRUE	/	TRUE	1787601293	platform	pc
-.pornhub.com	TRUE	/	TRUE	1802548493	bs	00000000000000007c72ae8ac8784e93
-.pornhub.com	TRUE	/	TRUE	1802548493	bsdd	00000000000000007c72ae8ac8784e93
-.pornhub.com	TRUE	/	TRUE	1802548493	ss	621990558078413398
-.pornhub.com	TRUE	/	TRUE	1802548493	sessid	322265831137159229
-.pornhub.com	TRUE	/	TRUE	1789588493	comp_detect-cookies	39353.100000
-.pornhub.com	TRUE	/	TRUE	1789588493	fg_afaf12e314c5419a855ddc0bf120670f	98479.100000
-.pornhub.com	TRUE	/	TRUE	1789588493	fg_43cd950e43067a4ecc8c7ba3d887ff26	29666.100000
-.pornhub.com	TRUE	/	TRUE	1789588493	fg_55e3b6f0afd46366d6fa797544b15af2	25061.100000
-.pornhub.com	TRUE	/	TRUE	1789588493	fg_41b1995ee5530001895f2da326e410dd	88419.100000
-.pornhub.com	TRUE	/	TRUE	1789588493	fg_7d31324eedb583147b6dcbea0051c868	29197.100000
-.pornhub.com	TRUE	/	TRUE	0	__s	6A83670C-42FE722901BB115314-3AC3B34
-.pornhub.com	TRUE	/	TRUE	1802548493	__l	6A83670C-42FE722901BB115314-3AC3B34
-.pornhub.com	TRUE	/	TRUE	1802548494	cookieConsent	1
-.pornhub.com	TRUE	/	FALSE	1787000096	accessAgeDisclaimerPH	2
-www.pornhub.com	FALSE	/	FALSE	0	rp	2301209927:Hx73cKZt3RI=
-.pornhub.com	TRUE	/	FALSE	1802548592	g_state	{"i_l":0,"i_ll":1786996592076,"i_b":"EnlPLjNr8zOxqEAEysCGRgnUwW+HY4X4/1OrsfDWgJg","i_e":{"enable_itp_optimization":24},"i_et":1786996592076}
+.pornhub.com	TRUE	/	TRUE	1789224337	platform	pc
+.pornhub.com	TRUE	/	TRUE	1820155537	ss	298349168261229924
+.pornhub.com	TRUE	/	TRUE	1791211537	comp_detect-cookies	90281.100000
+.pornhub.com	TRUE	/	TRUE	0	__s	6A9C2B10-42FE722901BB2C1E13-175539A5
+.pornhub.com	TRUE	/	TRUE	1820176463	__l	6A9C2B10-42FE722901BB2C1E13-175539A5
+www.pornhub.com	FALSE	/	FALSE	0	rp	2772482151:934PXMs8I6w=
+.pornhub.com	TRUE	/	TRUE	1820155603	cookieConsent	2
+.pornhub.com	TRUE	/	FALSE	1804171549	g_state	{"i_l":1,"i_ll":1788619549656,"i_b":"N4vcxaohsE1mB8UqDFM9dbBPu4mQFpgt3bsne6qjp1A","i_e":{"enable_itp_optimization":24},"i_et":1788619549656}
+.pornhub.com	TRUE	/	FALSE	1788623152	accessAgeDisclaimerPH	2
+.pornhub.com	TRUE	/	TRUE	1788706003	desired_username	7798b68%7Cpidadis134%40fidhost.com
+.pornhub.com	TRUE	/	TRUE	1804430803	il	v1RbWydStb45tZRYu1fdOmjfG1KNenYk0Lk9uj-iYyGkMxODA0NDMwODAySzN1WW1vdGV0XzBIcWxBc0F2aWphbGpDeEIyRURsMmU0dG04WlNJMQ..
