@@ -63,7 +63,7 @@ cmd(
       const parts = query.split(/\s+/);
       if (parts.length > 1) {
         let first = parts[0].toLowerCase().replace("p", "");
-        if (["360","480","720","1080"].includes(first)) {
+        if (["360", "480", "720", "1080"].includes(first)) {
           quality = parseInt(first);
           query = parts.slice(1).join(" "); // rest is URL
         }
@@ -90,9 +90,12 @@ cmd(
         query
       ];
 
-      await executeCommand("yt-dlp", metaArgs, { timeout: 30000 });
+      const metaResult = await executeCommand("yt-dlp", metaArgs, { timeout: 30000 });
 
-      // Find the generated files
+      if (metaResult.stderr) {
+        throw new Error(`Failed to fetch metadata: ${metaResult.stderr}`);
+      }
+
       const infoFile = findFile(tempDir, ".info.json");
       const thumbFile = findFile(tempDir, ".jpg");
 
@@ -153,66 +156,44 @@ cmd(
         "--no-warnings",
         "--cookies", cookiesPath,
         "--ffmpeg-location", ffmpegPath,
-        "-f", `bv*[height<=${quality}]+ba/best[height<=${quality}]/best`,
-        "--merge-output-format", "mp4",
-        "--concurrent-fragments", "16",
-        "--downloader", "aria2c",
-        "--downloader-args", "aria2c:-x 8 -s 8 -k 1M",
+        "--write-thumbnail",
+        "--convert-thumbnails", "jpg",
+        "--write-info-json",
         "-o", outputTemplate,
         query
       ];
 
-      await executeCommand("yt-dlp", videoArgs, { timeout: 180000 });
+      const videoResult = await executeCommand("yt-dlp", videoArgs, { timeout: 30000 });
 
-      const videoFile = findFile(tempDir, ".mp4");
-      if (!videoFile) throw new Error("Video download failed.");
-
-      const videoPath = path.join(tempDir, videoFile);
-
-      // Check file size before sending
-      const stats = fs.statSync(videoPath);
-      if (stats.size > 1000 * 1024 * 1024) {
-        fs.unlinkSync(videoPath);
-        throw new Error("Video file too large (over 100MB)");
+      if (videoResult.stderr) {
+        throw new Error(`Failed to download video: ${videoResult.stderr}`);
       }
 
-      // Send video file
       await robin.sendMessage(
         from,
         {
-          document: { url: videoPath },
-          mimetype: "video/mp4",
-          fileName: `${safeName(title)}_${selectedQuality}.mp4`,
+          text: 
+            `🎉 *GHOST PORNHUB DOWNLOADER*\n\n` +
+            `🎥 *Title:* ${title}\n` +
+            `⭐ *Stars:* ${stars}\n` +
+            `🕒 *Duration:* ${duration}\n` +
+            `👁 *Views:* ${views}\n` +
+            `📦 *Quality:* ${selectedQuality}\n` +
+            `🔗 *URL:* ${query}\n\n` +
+            `📥 *Downloaded video: ${outputTemplate}*\n`,
         },
         { quoted: mek }
       );
 
-      /* ---------- CLEANUP ---------- */
-      fs.readdirSync(tempDir).forEach(f => {
-        if (f.startsWith("pornhub_")) {
-          try {
-            fs.unlinkSync(path.join(tempDir, f));
-          } catch (cleanupErr) {
-            console.log("Cleanup error:", cleanupErr.message);
-          }
+      // Clean up files
+      const files = fs.readdirSync(tempDir);
+      files.forEach(file => {
+        if (file !== "pornhub_%(id)s.%(ext)s") {
+          fs.unlinkSync(path.join(tempDir, file));
         }
       });
-
-    } catch (err) {
-      console.error("Pornhub Error:", err);
-      
-      // Cleanup on error
-      try {
-        fs.readdirSync(tempDir).forEach(f => {
-          if (f.startsWith("pornhub_")) {
-            try {
-              fs.unlinkSync(path.join(tempDir, f));
-            } catch (e) {}
-          }
-        });
-      } catch (cleanupErr) {}
-      
-      reply(`❌ Error: ${err.message || "Unknown error"}`);
+    } catch (error) {
+      await reply(`Error: ${error.message}`);
     }
   }
 );
