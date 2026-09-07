@@ -29,16 +29,16 @@ function executeCommand(command, args, options = {}) {
       ...options
     }, (error, stdout, stderr) => {
       if (error) {
-        reject(error);
+        reject(new Error(stderr || error.message));
       } else {
         resolve({ stdout, stderr });
       }
     });
-    
+
     if (options.timeout) {
       setTimeout(() => {
         process.kill();
-        reject(new Error('Process timeout'));
+        reject(new Error("Process timeout"));
       }, options.timeout);
     }
   });
@@ -56,7 +56,6 @@ cmd(
   },
   async (robin, mek, m, { from, q, reply }) => {
     try {
-      /* ---------- SAFE INPUT + QUALITY ---------- */
       let quality = 720; // default
       let query = typeof q === "string" ? q.trim() : "";
 
@@ -75,9 +74,7 @@ cmd(
 
       const outputTemplate = path.join(tempDir, "pornhub_%(id)s.%(ext)s");
 
-      /* ==================================================
-         🔹 PHASE 1: METADATA + THUMBNAIL (NO VIDEO)
-         ================================================== */
+      // Phase 1: Metadata
       const metaArgs = [
         "--skip-download",
         "--no-warnings",
@@ -90,16 +87,20 @@ cmd(
         query
       ];
 
-      const metaResult = await executeCommand("yt-dlp", metaArgs, { timeout: 30000 });
-
-      if (metaResult.stderr) {
-        throw new Error(`Failed to fetch metadata: ${metaResult.stderr}`);
+      let metaResult;
+      try {
+        metaResult = await executeCommand("yt-dlp", metaArgs, { timeout: 30000 });
+      } catch (err) {
+        if (err.message.includes("HTTP Error 410")) {
+          return reply("🚫 Pornhub currently blocks automated downloads (HTTP 410 Gone). Downloader unsupported.");
+        }
+        return reply(`❌ Metadata fetch failed: ${err.message}`);
       }
 
       const infoFile = findFile(tempDir, ".info.json");
       const thumbFile = findFile(tempDir, ".jpg");
 
-      if (!infoFile) throw new Error("Failed to fetch metadata.");
+      if (!infoFile) return reply("❌ Failed to fetch metadata.");
 
       const infoPath = path.join(tempDir, infoFile);
       const info = JSON.parse(fs.readFileSync(infoPath, "utf8"));
@@ -108,65 +109,42 @@ cmd(
       const duration = info.duration ? new Date(info.duration * 1000).toISOString().substr(11, 8) : "Unknown";
       const views = info.view_count ? info.view_count.toLocaleString() : "Unknown";
       const stars = Array.isArray(info.cast) && info.cast.length ? info.cast.join(", ") : "Unknown";
-
       const selectedQuality = info.height ? `${Math.min(info.height, quality)}p` : `${quality}p`;
 
-      // Send thumbnail message first
+      // Send thumbnail or text
+      const caption = 
+        `👻 *GHOST PORNHUB DOWNLOADER*\n\n` +
+        `🎥 *Title:* ${title}\n` +
+        `⭐ *Stars:* ${stars}\n` +
+        `🕒 *Duration:* ${duration}\n` +
+        `👁 *Views:* ${views}\n` +
+        `📦 *Quality:* ${selectedQuality}\n` +
+        `🔗 *URL:* ${query}\n\n` +
+        `📥 *Downloading video…*`;
+
       if (thumbFile) {
         const thumbPath = path.join(tempDir, thumbFile);
-        await robin.sendMessage(
-          from,
-          {
-            image: { url: thumbPath }, // Send as image file path
-            caption: 
-              `👻 *GHOST PORNHUB DOWNLOADER*\n\n` +
-              `🎥 *Title:* ${title}\n` +
-              `⭐ *Stars:* ${stars}\n` +
-              `🕒 *Duration:* ${duration}\n` +
-              `👁 *Views:* ${views}\n` +
-              `📦 *Quality:* ${selectedQuality}\n` +
-              `🔗 *URL:* ${query}\n\n` +
-              `📥 *Downloading video…*`,
-          },
-          { quoted: mek }
-        );
+        await robin.sendMessage(from, { image: { url: thumbPath }, caption }, { quoted: mek });
       } else {
-        // Send text message if thumbnail not found
-        await robin.sendMessage(
-          from,
-          {
-            text: 
-              `👻 *GHOST PORNHUB DOWNLOADER*\n\n` +
-              `🎥 *Title:* ${title}\n` +
-              `⭐ *Stars:* ${stars}\n` +
-              `🕒 *Duration:* ${duration}\n` +
-              `👁 *Views:* ${views}\n` +
-              `📦 *Quality:* ${selectedQuality}\n` +
-              `🔗 *URL:* ${query}\n\n` +
-              `📥 *Downloading video…*`,
-          },
-          { quoted: mek }
-        );
+        await robin.sendMessage(from, { text: caption }, { quoted: mek });
       }
 
-      /* ==================================================
-         🔹 PHASE 2: VIDEO DOWNLOAD
-         ================================================== */
+      // Phase 2: Video download
       const videoArgs = [
         "--no-warnings",
         "--cookies", cookiesPath,
         "--ffmpeg-location", ffmpegPath,
-        "--write-thumbnail",
-        "--convert-thumbnails", "jpg",
-        "--write-info-json",
         "-o", outputTemplate,
         query
       ];
 
-      const videoResult = await executeCommand("yt-dlp", videoArgs, { timeout: 30000 });
-
-      if (videoResult.stderr) {
-        throw new Error(`Failed to download video: ${videoResult.stderr}`);
+      try {
+        await executeCommand("yt-dlp", videoArgs, { timeout: 60000 });
+      } catch (err) {
+        if (err.message.includes("HTTP Error 410")) {
+          return reply("🚫 Pornhub video download blocked (HTTP 410 Gone). Downloader unsupported.");
+        }
+        return reply(`❌ Video download failed: ${err.message}`);
       }
 
       await robin.sendMessage(
@@ -180,15 +158,15 @@ cmd(
             `👁 *Views:* ${views}\n` +
             `📦 *Quality:* ${selectedQuality}\n` +
             `🔗 *URL:* ${query}\n\n` +
-            `📥 *Downloaded video: ${outputTemplate}*\n`,
+            `📥 *Downloaded video saved to temp folder.*\n`,
         },
         { quoted: mek }
       );
 
-      // Clean up files
+      // Clean up
       const files = fs.readdirSync(tempDir);
       files.forEach(file => {
-        if (file !== "pornhub_%(id)s.%(ext)s") {
+        if (!file.includes("%(id)s")) {
           fs.unlinkSync(path.join(tempDir, file));
         }
       });
