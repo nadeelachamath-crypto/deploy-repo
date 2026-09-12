@@ -1,0 +1,15 @@
+# Netscape HTTP Cookie File
+# https://curl.haxx.se/rfc/cookie_spec.html
+# This is a generated file! Do not edit.
+
+.xhamster.com	TRUE	/	TRUE	1789311018	stats_src_last	google.com
+.xhamster.com	TRUE	/	FALSE	1820760623	cookie_accept_v2	%7B%22e%22%3A1%2C%22f%22%3A1%2C%22t%22%3A1%2C%22a%22%3A1%7D
+.xhamster.com	TRUE	/	FALSE	1820760618	ff_thumb_offset	2
+.xhamster.com	TRUE	/	FALSE	1789225518	recs_show_time	1789224617
+.xhamster.com	TRUE	/	FALSE	1820760618	moments_listing_ad_offset	2
+.xhamster.com	TRUE	/	TRUE	1791816618	_cfg	134f8d4fe57f6bad5ba3c313bab243b9
+xhamster.com	FALSE	/	FALSE	0	cookie_accept	1
+xhamster.com	FALSE	/	FALSE	0	ts_popunder	true
+.xhamster.com	TRUE	/	FALSE	1820760619	settings	eyJ0cnVzdFVSTHMiOlsieGhhbXN0ZXIuY29tIl0sImV4cGlyZXMiOnsidHJ1c3RVUkxzIjoxNzg5MjMxODE4fSwiaXNXZWJtU3VwcG9ydGVkIjp0cnVlLCJpc1dlYnBTdXBwb3J0ZWQiOnRydWV9
+.xhamster.com	TRUE	/	FALSE	0	x_csrf_token	1
+.xhamster.com	TRUE	/	FALSE	1820760622	parental-control	yes

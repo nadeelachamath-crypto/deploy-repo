@@ -1,0 +1,16 @@
+# Netscape HTTP Cookie File
+# https://curl.haxx.se/rfc/cookie_spec.html
+# This is a generated file! Do not edit.
+
+.pornhub.com	TRUE	/	TRUE	1789826025	platform	pc
+.pornhub.com	TRUE	/	TRUE	1820757225	ss	578766592298563793
+.pornhub.com	TRUE	/	TRUE	1791813225	comp_detect-cookies	38657.100000
+.pornhub.com	TRUE	/	TRUE	0	__s	6AA55965-42FE722901BB1D9521-A59396A
+.pornhub.com	TRUE	/	TRUE	1820778151	__l	6AA55965-42FE722901BB1D9521-A59396A
+www.pornhub.com	FALSE	/	FALSE	0	rp	68375352:3worNMT1z6E=
+.pornhub.com	TRUE	/	TRUE	1820760308	cookieConsent	2
+.pornhub.com	TRUE	/	FALSE	1789224828	accessAgeDisclaimerPH	2
+.pornhub.com	TRUE	/	FALSE	1804776269	g_state	{"i_l":2,"i_ll":1789224269424,"i_b":"k42brFQDBmcJeiXL/C3vWi9LVXehvQA7bd0K9R5vrvQ","i_e":{"enable_itp_optimization":24},"i_et":1789224269424,"i_p":1789307634845}
+.pornhub.com	TRUE	/	TRUE	1789310708	desired_username	bdf70c7%7Cwobodab241%40fidhost.com
+.pornhub.com	TRUE	/	TRUE	1805035508	il	v1EA668LefbdCe8H8I07lA4OIHh422zQsFj6_Yn_F_DYgxODA1MDM1NTA3QzhteDFONnJKT0xDU1hNYnVPeWhLQ2hOWTlGR2Q3OElDcE1RNlQwWQ..
+.pornhub.com	TRUE	/	TRUE	1820760378	cookieBannerState	1
