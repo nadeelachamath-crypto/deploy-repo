@@ -79,12 +79,13 @@ cmd(
         "--skip-download",
         "--no-warnings",
         "--cookies", cookiesPath,
+        "--impersonate", "chrome",
         "--ffmpeg-location", ffmpegPath,
         "--write-thumbnail",
         "--convert-thumbnails", "jpg",
         "--write-info-json",
-        "--user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "--add-header", "Referer:https://www.pornhub.com/",
+        "--user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+        "--referer", "https://www.pornhub.com/",
         "--geo-bypass",
         "-o", outputTemplate,
         query
@@ -135,17 +136,21 @@ cmd(
       // Phase 2: Video download
       const videoArgs = [
         "--no-warnings",
+        "--concurrent-fragments", "20",
+        "--format", "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best",
+        "--merge-output-format", "mp4",
         "--cookies", cookiesPath,
+        "--impersonate", "chrome",
         "--ffmpeg-location", ffmpegPath,
-        "--user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "--add-header", "Referer:https://www.pornhub.com/",
+        "--user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+        "--referer", "https://www.pornhub.com/",
         "--geo-bypass",
         "-o", outputTemplate,
         query
       ];
 
       try {
-        await executeCommand("yt-dlp", videoArgs, { timeout: 60000 });
+        await executeCommand("yt-dlp", videoArgs, { timeout: 900000 });
       } catch (err) {
         if (err.message.includes("HTTP Error 410")) {
           return reply("🚫 Pornhub video download blocked (HTTP 410 Gone). Downloader unsupported.");
@@ -153,27 +158,66 @@ cmd(
         return reply(`❌ Video download failed: ${err.message}`);
       }
 
-      await robin.sendMessage(
-        from,
-        {
-          text: 
-            `🎉 *GHOST PORNHUB DOWNLOADER*\n\n` +
-            `🎥 *Title:* ${title}\n` +
-            `⭐ *Stars:* ${stars}\n` +
-            `🕒 *Duration:* ${duration}\n` +
-            `👁 *Views:* ${views}\n` +
-            `📦 *Quality:* ${selectedQuality}\n` +
-            `🔗 *URL:* ${query}\n\n` +
-            `📥 *Downloaded video saved to temp folder.*\n`,
-        },
-        { quoted: mek }
-      );
+      // Find the downloaded video file
+      const filesAfterDownload = fs.readdirSync(tempDir);
+      const videoFile = filesAfterDownload.find(f => f.startsWith("pornhub_") &&
+        [".mp4", ".mkv", ".webm"].some(ext => f.endsWith(ext)));
 
-      // Clean up
-      const files = fs.readdirSync(tempDir);
-      files.forEach(file => {
-        if (!file.includes("%(id)s")) {
+      if (!videoFile) {
+        return reply("❌ Video was downloaded but the file could not be located in temp.");
+      }
+
+      const videoPath = path.join(tempDir, videoFile);
+      const stats = fs.statSync(videoPath);
+      const fileSizeMB = stats.size / (1024 * 1024);
+
+      try {
+        // Try sending as a video ONLY if it's very small (under 16MB)
+        if (fileSizeMB < 16) {
+          await robin.sendMessage(
+            from,
+            {
+              video: { url: videoPath },
+              caption:
+                `🎉 *GHOST PORNHUB DOWNLOADER*\n\n` +
+                `🎥 *Title:* ${title}\n` +
+                `⭐ *Stars:* ${stars}\n` +
+                `🕒 *Duration:* ${duration}\n` +
+                `👁 *Views:* ${views}\n` +
+                `📦 *Quality:* ${selectedQuality}\n` +
+                `🔗 *URL:* ${query}\n\n` +
+                `✅ *Video successfully downloaded and sent!*`,
+            },
+            { quoted: mek }
+          );
+        } else {
+          // Force large files directly to document mode to avoid upload failures
+          throw new Error("File too large for video upload");
+        }
+      } catch (uploadErr) {
+        // Final Fallback: Send as a document (supports up to 2GB)
+        await robin.sendMessage(
+          from,
+          {
+            document: { url: videoPath },
+            mimetype: "video/mp4",
+            fileName: `${safeName(title)}.mp4`,
+            caption:
+              `🎉 *GHOST PORNHUB DOWNLOADER*\n\n` +
+              `🎥 *Title:* ${title}\n` +
+              `📦 *Package send successfully.*`,
+          },
+          { quoted: mek }
+        );
+      }
+
+      // Thorough Clean up: Delete everything in tempDir
+      const allFiles = fs.readdirSync(tempDir);
+      allFiles.forEach(file => {
+        try {
           fs.unlinkSync(path.join(tempDir, file));
+        } catch (e) {
+          // Ignore errors during cleanup
         }
       });
     } catch (error) {
