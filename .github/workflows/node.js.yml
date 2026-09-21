@@ -24,7 +24,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
+          
+      - name: Update python dependencies
+        run: python -m pip install --upgrade pip
+        
       - name: Install python dependencies
         run: python3 -m pip install yt-dlp -U && python3 -m pip install yt-dlp --upgrade && pip install curl_cffi
 
