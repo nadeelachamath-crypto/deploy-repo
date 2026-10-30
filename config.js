@@ -13,23 +13,23 @@ function convertToBool(text, fault = "true") {
 }
 
 module.exports = {
-  SESSION_ID: process.env.SESSION_ID || "CPoD0RLI#9iE1v1iua7D3OTzkmVHaN57frhpUB5s6-1Lksg7HEuM",
+  SESSION_ID: process.env.SESSION_ID || "B64SHILL#WXvgl8re9s2E-vHKtjfik-SzQl7Ec06aYXrTw_zoOhQ",
   MONGODB: process.env.MONGODB || "",
-  OWNER_NUM: (process.env.OWNER_NUM || "94701981053").split(","),
+  OWNER_NUM: (process.env.OWNER_NUM || "94701631571").split(","),
 
   OLLAMA_HOST: "https://ollama.com",
   OLLAMA_MODEL: "gpt-oss:120b-cloud",
   OLLAMA_API_KEY: "5f90d76c4e3e4fba854e196ed2738790.I7PxUZBaIkR0ptskUglibBsk",
-  AUTO_READ_MESSAGES: true,
+  AUTO_READ_MESSAGES: false,
   AUTH_SYSTEM: false,
   AUTO_READ_STATUS: true,
   AUTO_LIKE_STATUS: true,
   AUTO_REPLY_STATUS: false,
   STATUS_REACT_EMOJI: "👻",
   STATUS_REPLY_TEXT: "🔥 Nice status!",
-  MODE: "groups",
+  MODE: "private",
   PREFIX: ".",
-  AUTO_FAKE_TYPING: true,
+  AUTO_FAKE_TYPING: false,
   FAKE_TYPING_DELAY_MIN: 800,
   FAKE_TYPING_DELAY_MAX: 2000,
 
