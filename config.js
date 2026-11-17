@@ -27,7 +27,7 @@ module.exports = {
   AUTO_REPLY_STATUS: false,
   STATUS_REACT_EMOJI: "👻",
   STATUS_REPLY_TEXT: "🔥 Nice status!",
-  MODE: "private",
+  MODE: "public",
   PREFIX: ".",
   AUTO_FAKE_TYPING: false,
   FAKE_TYPING_DELAY_MIN: 800,
