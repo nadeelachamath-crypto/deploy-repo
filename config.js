@@ -13,7 +13,7 @@ function convertToBool(text, fault = "true") {
 }
 
 module.exports = {
-  SESSION_ID: process.env.SESSION_ID || "B64SHILL#WXvgl8re9s2E-vHKtjfik-SzQl7Ec06aYXrTw_zoOhQ",
+  SESSION_ID: process.env.SESSION_ID || "ImJ0VDLQ#vgDgIq91Xhe7_HL3uLhAqlR-Yfo94qAORrfXpPZrOHs",
   MONGODB: process.env.MONGODB || "",
   OWNER_NUM: (process.env.OWNER_NUM || "94701631571").split(","),
 
